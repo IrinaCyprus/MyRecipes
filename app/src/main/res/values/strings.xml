@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Recipes</string>
+    <string name="head_image">head_image</string>
+    <string name="header_ingredients">INGREDIENTS</string>
+    <string name="basket_button">Button "basket"</string>
+    <string name="add_basket_button">Button "Add all ingredients to basket</string>
+    <string name="add_to_shopping_list">Add All to Shopping List</string>
+    <string name="author_name">Name Surname</string>
+    <string name="menu">Button menu</string>
+    <string name="name_recipes">Recipes name</string>
+    <string name="category">Category</string>
+</resources>

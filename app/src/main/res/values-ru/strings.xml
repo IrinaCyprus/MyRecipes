@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мои Рецепты</string>
+    <string name="head_image">главная картинка</string>
+    <string name="header_ingredients">Ингредиенты</string>
+    <string name="basket_button">Кнопка "корзина"</string>
+    <string name="add_basket_button">Кнопка добавления ингридиентов в корзину</string>
+    <string name="add_to_shopping_list">Добавить все ингридиенты в корзину</string>
+    <string name="author_name">Имя автора</string>
+    <string name="menu">Кнопка меню</string>
+    <string name="name_recipes">Название рецепта</string>
+    <string name="category">Категория</string>
+</resources>
