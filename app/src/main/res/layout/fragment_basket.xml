@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    tools:context=".BasketFragment">
+
+    <TextView
+        android:id="@+id/ingredientsText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/header_ingredients"
+        android:text="@string/header_ingredients"
+        android:textSize="@dimen/ingredients"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/still_empty"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/ingredientsList"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="@dimen/text_margin"-->
+    <!--        android:layout_marginEnd="@dimen/text_margin"-->
+    <!--        android:layout_marginTop="@dimen/text_margin"-->
+    <!--        android:textSize="24sp"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/ingredients"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/deleteIngredientMaterialButton"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        tools:text="2 яйца" />-->
+
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/deleteIngredientMaterialButton"-->
+    <!--        style="@style/Widget.AppTheme.DeleteStepButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginEnd="@dimen/text_margin"-->
+    <!--        android:layout_marginTop="@dimen/text_margin"-->
+    <!--        android:contentDescription="@string/delete_ingredient_text_description"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/ingredientsList"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--/>-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ingredientsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredientsText"
+        tools:listitem="@layout/ingredient" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

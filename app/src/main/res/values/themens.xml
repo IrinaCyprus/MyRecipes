@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.MyRecipes" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimary">@color/red</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -16,14 +16,14 @@
 
     <style name="Widget.AppTheme.BasketCheckbox" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="icon">@drawable/ic_shoppingcart</item>
-        <item name="iconTint">@color/purple_200</item>
+        <item name="iconTint">@color/red</item>
         <item name="android:minWidth">@dimen/icon_button_min_size</item>
         <item name="android:minHeight">@dimen/icon_button_min_size</item>
     </style>
 
     <style name="Widget.AppTheme.addBasketCheckbox" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="icon">@drawable/ic_add_shoppingcart</item>
-        <item name="iconTint">@color/purple_200</item>
+        <item name="iconTint">@color/add_basket_checkbox_tint</item>
         <item name="android:minWidth">@dimen/icon_button_min_size</item>
         <item name="android:minHeight">@dimen/icon_button_min_size</item>
     </style>
@@ -37,9 +37,36 @@
 
     <style name="Widget.AppTheme.AddIngredientsCheckbox" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="icon">@drawable/ic_add_circle_24</item>
-        <item name="iconTint">@color/purple_200</item>
+        <item name="iconTint">@color/red</item>
         <item name="android:minWidth">@dimen/icon_button_min_size</item>
         <item name="android:minHeight">@dimen/icon_button_min_size</item>
+    </style>
+
+    <style name="Widget.AppTheme.AddRecipesCheckbox" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="icon">@drawable/ic_baseline_add_circle_48</item>
+        <item name="iconTint">@color/red</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+    </style>
+
+    <style name="Widget.AppTheme.LikeCheckbox" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="icon">@drawable/ic_like_24dp</item>
+        <item name="iconTint">@color/like_checkbox_tint</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+    </style>
+
+    <style name="Widget.AppTheme.DeleteStepButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="icon">@drawable/ic_baseline_delete_outline_24</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconSize">24dp</item>
+        <item name="iconTint">@color/add_basket_checkbox_tint</item>
+        <item name="cornerRadius">60dp</item>
+        <item name="rippleColor">@color/red</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
     </style>
 
 </resources>

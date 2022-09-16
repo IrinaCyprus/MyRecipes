@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="add_recipes" type="id" />
+    <item name="switch_European" type="id" />
+    <item name="switch_Asian" type="id" />
+    <item name="switch_Pan_Asian" type="id" />
+</resources>

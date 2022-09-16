@@ -8,6 +8,42 @@
     <string name="add_to_shopping_list">Добавить все ингридиенты в корзину</string>
     <string name="author_name">Имя автора</string>
     <string name="menu">Кнопка меню</string>
-    <string name="name_recipes">Название рецепта</string>
+    <string name="name_recipe">Название рецепта</string>
     <string name="category">Категория</string>
+    <string name="add_ingredients">Кнопка добавить игредиенты</string>
+    <string name="line">Разделительная линия</string>
+    <string name="text_ingredients">Текст ингредиентов</string>
+    <string name="list_ingredients">Список ингредиентов</string>
+    <string name="add_recipe">Кнопка добавить рецепт</string>
+    <string name="text_recipes">1. Смешать все ингредиенты венчиком или вилкой (должно получиться достаточно густое тесто). 2. Разогреть сковородку с антипригарным покрытием. 3. На среднем огне на сухую сковородку налить тесто. 4. Закрыть стеклянной крышкой. 5. Дождаться появления пузыриков, при этом поверхность будет еще влажная. 6. Перевернуть и печь под крышкой. Каждый блинчик готовится не более 1 минуты.</string>
+    <string name="european"> Европейская</string>
+    <string name="russian"> Русская</string>
+    <string name="asian"> Азиатская</string>
+    <string name="remove"> Удалить</string>
+    <string name="edit"> Редактировать</string>
+    <string name="saveButton"> Кнопка сохранения</string>
+    <string name="uri"> Uri</string>
+    <string name="add_text_ingredients"> Добавьте ингредиенты</string>
+    <string name="like"> Избранное</string>
+    <string name="request_hint"> Что вы ищите?</string>
+    <string name="choose_a_category">Add recipe name</string>
+    <string name="filter_category_European">Европейская выбрать</string>
+    <string name="filter_category_Asian">Азиатская выбрать</string>
+    <string name="filter_category_Russian">Русская выбрать</string>
+    <string name="all">Все</string>
+    <string name="filter">filter</string>
+    <string name="no_recipes">Нет рецептов в этой категории</string>
+    <string name="still_empty">Нет ингредиентов в корзине</string>
+    <string name="still_empty2">Нет избранных рецептов</string>
+    <string name="delete_ingredient_text_description" />
+    <string name="home" />
+    <string name="favorites" />
+
+
+    <string-array name="categories">
+        <item>@string/european</item>
+        <item>@string/asian</item>
+        <item>@string/russian</item>
+    </string-array>
+
 </resources>

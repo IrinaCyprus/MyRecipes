@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/image"
@@ -11,14 +11,16 @@
         android:layout_height="200dp"
         android:background="@drawable/jpeg_test"
         android:contentDescription="@string/head_image"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/author_name"
+        android:id="@+id/authorName"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginStart="@dimen/text_margin"
         android:contentDescription="@string/author_name"
         android:textColor="@color/white"
         android:textSize="@dimen/add_to_shopping_list"
@@ -28,7 +30,7 @@
         tools:text="@string/author_name" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/menu"
+        android:id="@+id/menuRecipe"
         style="@style/Widget.AppTheme.MenuCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,17 +41,17 @@
         tools:checked="true" />
 
     <TextView
-        android:id="@+id/name_recipes"
+        android:id="@+id/nameRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/name_recipes"
-        android:text="@string/name_recipes"
+        android:contentDescription="@string/name_recipe"
+        android:text="@string/name_recipe"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/containedButtonCategory"
@@ -59,28 +61,21 @@
         app:layout_constraintBottom_toBottomOf="@id/image"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/name_recipes"
-        tools:ignore="MissingConstraints" />
-
     <TextView
-        android:id="@+id/ingredients"
+        android:id="@+id/textIngredients"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/text_margin"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/header_ingredients"
         android:textSize="@dimen/ingredients"
-        app:layout_constraintTop_toBottomOf="@id/name_recipes"
+        app:layout_constraintTop_toBottomOf="@id/nameRecipe"
         tools:ignore="SpUsage"
+        tools:layout_editor_absoluteX="16dp"
         tools:text="@string/header_ingredients" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/basket_button"
+        android:id="@+id/basketButton"
         style="@style/Widget.AppTheme.BasketCheckbox"
         android:layout_width="60dp"
         android:layout_height="40dp"
@@ -89,54 +84,137 @@
         android:checkable="true"
         android:contentDescription="@string/basket_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_recipes"
+        app:layout_constraintTop_toBottomOf="@id/nameRecipe"
         tools:checked="true"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/add_basket_button"
+        android:id="@+id/addBasketButton"
         style="@style/Widget.AppTheme.addBasketCheckbox"
         android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:checkable="true"
         android:contentDescription="@string/add_basket_button"
-        app:layout_constraintTop_toBottomOf="@id/ingredients"
+        app:layout_constraintTop_toBottomOf="@id/textIngredients"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp" />
 
     <TextView
-        android:id="@+id/text_add_to_shopping_list"
+        android:id="@+id/textAddToShoppingList"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:contentDescription="@string/add_to_shopping_list"
         android:textSize="@dimen/add_to_shopping_list"
-        app:layout_constraintBottom_toBottomOf="@id/add_basket_button"
-        app:layout_constraintStart_toEndOf="@id/add_basket_button"
+        app:layout_constraintBottom_toBottomOf="@id/addBasketButton"
+        app:layout_constraintStart_toEndOf="@id/addBasketButton"
         tools:ignore="SpUsage"
         tools:text="@string/add_to_shopping_list" />
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_add_to_shopping_List"
+        android:id="@+id/groupAddToShoppingList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="visible"
-        app:constraint_referenced_ids="add_basket_button,text_add_to_shopping_list" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:layout_constraintTop_toBottomOf="@id/group_add_to_shopping_List" />
+        app:constraint_referenced_ids="addBasketButton,textAddToShoppingList" />
 
     <ImageView
-        android:id="@+id/add_ingredients"
+        android:id="@+id/barrier"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/darker_gray"
+        android:contentDescription="@string/line"
+        android:visibility="visible"
+        app:barrierDirection="bottom"
+        app:layout_constraintTop_toBottomOf="@id/textAddToShoppingList" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addIngredients"
         style="@style/Widget.AppTheme.AddIngredientsCheckbox"
-        android:layout_width="24dp"
+        android:layout_width="40dp"
         android:layout_height="24dp"
-        app:layout_constraintTop_toBottomOf="@id/group_add_to_shopping_List"
+        android:layout_marginTop="8dp"
+        android:checkable="true"
+        android:contentDescription="@string/add_ingredients"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/text_margin"
+        android:contentDescription="@string/text_ingredients"
+        android:textSize="@dimen/text_margin"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        tools:ignore="SpUsage"
+        tools:text="@string/list_ingredients" />
+
+    <ImageView
+        android:id="@+id/barrier2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/darker_gray"
+        android:contentDescription="@string/line"
+        android:visibility="visible"
+        app:barrierDirection="bottom"
+        app:layout_constraintTop_toBottomOf="@id/ingredients" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/text_margin"
+        android:contentDescription="@string/text_recipes"
+        android:textSize="@dimen/text_margin"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        tools:ignore="SpUsage"
+        tools:text="@string/text_recipes" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/like"
+        style="@style/Widget.AppTheme.LikeCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:checkable="true"
+        android:contentDescription="@string/like"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        tools:checked="true"
+        tools:text="Favorites" />
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/addRecipe"-->
+<!--            style="@style/Widget.AppTheme.AddRecipesCheckbox"-->
+<!--            android:layout_width="76dp"-->
+<!--            android:layout_height="66dp"-->
+<!--            android:layout_marginTop="@dimen/text_margin"-->
+<!--            android:layout_marginEnd="@dimen/text_margin"-->
+<!--            android:layout_marginBottom="@dimen/text_margin"-->
+<!--            android:checkable="true"-->
+<!--            android:contentDescription="@string/add_recipe"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/textRecipe" />-->
+
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:id="@+id/bottom_navigation_bar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="start"-->
+<!--            app:backgroundTint="@color/red"-->
+
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            android:background="?android:attr/windowBackground"-->
+<!--            app:menu="@menu/bottom_navigation_bar" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

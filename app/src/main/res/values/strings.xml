@@ -8,6 +8,41 @@
     <string name="add_to_shopping_list">Add All to Shopping List</string>
     <string name="author_name">Name Surname</string>
     <string name="menu">Button menu</string>
-    <string name="name_recipes">Recipes name</string>
+    <string name="name_recipe">Recipe name</string>
     <string name="category">Category</string>
+    <string name="add_ingredients">Button add to ingredients</string>
+    <string name="line">Line</string>
+    <string name="text_ingredients">Text ingredients</string>
+    <string name="list_ingredients">List ingredients</string>
+    <string name="add_recipe">Button add recipes</string>
+    <string name="text_recipes">1. Mix all the ingredients with a whisk or fork (you should get a fairly thick dough). 2. Heat up a non-stick frying pan. 3. Pour the dough into a dry frying pan over medium heat. 4. Close the glass lid. 5. Wait until bubbles appear, while the surface is still wet. 6. Turn over and bake covered. Each pancake is cooked no more than 1 minute.</string>
+    <string name="european"> European</string>
+    <string name="russian"> Russian</string>
+    <string name="asian"> Asian</string>
+    <string name="remove"> Remove</string>
+    <string name="edit"> Edit</string>
+    <string name="saveButton"> Save Button</string>
+    <string name="uri"> uri</string>
+    <string name="add_text_ingredients"> Add ingredients</string>
+    <string name="like"> Favorite</string>
+    <string name="request_hint"> What are you looking for?</string>
+    <string name="choose_a_category">Choose category</string>
+    <string name="filter_category_European">choose European</string>
+    <string name="filter_category_Asian">choose Asian</string>
+    <string name="filter_category_Russian">choose Russian</string>
+    <string name="all">All</string>
+    <string name="filter">filter</string>
+    <string name="no_recipes">There are no recipes in this category</string>
+    <string name="still_empty">Basket is empty</string>
+    <string name="still_empty2">Favorite is empty</string>
+    <string name="delete_ingredient_text_description" />
+    <string name="home" />
+    <string name="favorites" />
+
+    <string-array name="categories">
+        <item>@string/european</item>
+        <item>@string/asian</item>
+        <item>@string/russian</item>
+    </string-array>
+
 </resources>
