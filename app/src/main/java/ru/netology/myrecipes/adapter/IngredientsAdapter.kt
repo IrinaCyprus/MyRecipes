@@ -1,15 +1,13 @@
 package ru.netology.myrecipes.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
-import ru.netology.myrecipes.databinding.FragmentBasketBinding
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recipes_list.view.*
-import ru.netology.myrecipes.data.Recipe
+import ru.netology.myrecipes.databinding.FragmentBasketBinding
 
 class IngredientsAdapter(
 
@@ -39,16 +37,16 @@ class IngredientsAdapter(
         private lateinit var ingredient: String
         
         init {
-//            binding.deleteIngredientMaterialButton.setOnClickListener {
-//                listener.onDeleteIngredientsClicked(ingredient) }
-        }
+            binding.deleteIngredientMaterialButton.setOnClickListener {
+                listener.onDeleteIngredientsClicked(ingredient) }
+    }
 
         fun bind(ingredient: String) {
             this.ingredient = ingredient
             with(binding) {
                 ingredientsText.visibility = View.VISIBLE
                 ingredientsList.toString()
-//                deleteIngredientMaterialButton.visibility = View.VISIBLE
+                deleteIngredientMaterialButton.visibility = View.VISIBLE
                 empty.visibility = View.VISIBLE
             }
         }

@@ -1,12 +1,10 @@
 package ru.netology.myrecipes.adapter
 
-import android.content.Context
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -62,7 +60,6 @@ internal class RecipeAdapter(
         init {
             binding.image.setOnClickListener { listener.onOpenRecipeClicked(recipe) }
             binding.like.setOnClickListener { listener.onLikeClicked(recipe) }
-//            binding.containedButtonCategory.setOnClickListener { listener.onCategoryClicked(categoryId = 2) }
             binding.basketButton.setOnClickListener { listener.onBasketClicked(ingredients) }
             binding.addBasketButton.setOnClickListener { listener.onAddBasketButtonClicked(recipe) }
             binding.menuRecipe.setOnClickListener { popupMenu.show() }
@@ -71,7 +68,6 @@ internal class RecipeAdapter(
         fun bind(recipe: Recipe) {
             this.recipe = recipe
             with(binding) {
-//                image.isVisible = recipe.head_image.isNotBlank()
                 image.setImageURI(Uri.parse(recipe.head_image))
                 authorName.text = recipe.author_name
                 containedButtonCategory.text = recipe.category

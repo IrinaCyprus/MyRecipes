@@ -1,9 +1,7 @@
 package ru.netology.myrecipes
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -12,11 +10,9 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_search.*
 import ru.netology.myrecipes.adapter.RecipeAdapter
 import ru.netology.myrecipes.data.Recipe
 import ru.netology.myrecipes.databinding.FragmentFeedBinding

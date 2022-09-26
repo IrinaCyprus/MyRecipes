@@ -61,11 +61,11 @@ class RecipeFragment : Fragment() {
             }
         }
 
-//        viewModel.ingredientsList.observe(viewLifecycleOwner) {
-//            val direction =
-//                RecipeFragmentDirections.actionRecipeFragmentToBasketFragment()
-//            findNavController().navigate(direction)
-//        }
+        viewModel.ingredientsList.observe(viewLifecycleOwner) {
+            val direction =
+                RecipeFragmentDirections.actionRecipeFragmentToBasketFragment()
+            findNavController().navigate(direction)
+        }
 
         viewModel.navigateToRecipeContentScreenEvent.observe(viewLifecycleOwner) {
             val direction = RecipeFragmentDirections.actionRecipeFragmentToNewRecipeFragment()

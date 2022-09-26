@@ -2,18 +2,12 @@ package ru.netology.myrecipes
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.ingredient.*
 import ru.netology.myrecipes.adapter.IngredientsAdapter
-import ru.netology.myrecipes.adapter.RecipeAdapter
 import ru.netology.myrecipes.databinding.FragmentBasketBinding
-import ru.netology.myrecipes.databinding.FragmentFavoritesBinding
-import ru.netology.myrecipes.databinding.FragmentFilterBinding
 import ru.netology.myrecipes.viewModel.RecipeViewModel
 
 class BasketFragment : Fragment(R.layout.fragment_basket) {
@@ -34,8 +28,8 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
 
         adapterBasket.submitList(ingredients)
 
-//        binding.deleteIngredientMaterialButton.setOnClickListener {
-//            viewModel.onDeleteIngredientsClicked(ingredient = "")
-//        }
+        binding.deleteIngredientMaterialButton.setOnClickListener {
+            viewModel.onDeleteIngredientsClicked(ingredient = "")
+        }
     }.root
 }
