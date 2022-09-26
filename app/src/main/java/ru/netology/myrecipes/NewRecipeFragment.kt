@@ -1,5 +1,6 @@
 package ru.netology.myrecipes
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,16 +11,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.recipes_list.*
 import ru.netology.myrecipes.databinding.FragmentNewRecipeBinding
 import ru.netology.myrecipes.viewModel.RecipeViewModel
-import java.io.Serializable
 
 
 class NewRecipeFragment : Fragment() {
 
+    lateinit var binding: FragmentNewRecipeBinding
     private var imageContent: Uri? = null
     private val viewModel: RecipeViewModel by viewModels(ownerProducer = ::requireParentFragment)
 
@@ -28,12 +27,16 @@ class NewRecipeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentNewRecipeBinding.inflate(inflater, container, false)
+        binding = FragmentNewRecipeBinding.inflate(inflater, container, false)
 
         val image = registerForActivityResult(ActivityResultContracts.OpenDocument()) {
             Snackbar.make(binding.root, it.toString(), Snackbar.LENGTH_LONG).show()
+            requireActivity().contentResolver.takePersistableUriPermission(
+                requireNotNull(it),
+                Intent.FLAG_GRANT_READ_URI_PERMISSION
+            )
             binding.image.setImageURI(it)
-//            viewModel.imageContent.value=it.toString()
+            viewModel.imageContent.value = it.toString()
         }
 
         binding.saveButton.setOnClickListener {
@@ -47,11 +50,11 @@ class NewRecipeFragment : Fragment() {
         viewModel.currentRecipe.observe(viewLifecycleOwner) { recipe ->
             if (recipe != null) {
                 with(binding) {
-                    nameRecipe.text = recipe.name_recipe
+                    addNameRecipe.setText(recipe.name_recipe)
                     category.setSelection(recipe.categoryId)
-                    ingredients.text = recipe.ingredients
-                    content.text = recipe.content
+                    addTextIngredients.setText(recipe.ingredients)
                     viewModel.imageContent.value = recipe.head_image
+                    contentEditText.setText(recipe.content)
                 }
             }
         }
@@ -63,7 +66,7 @@ class NewRecipeFragment : Fragment() {
         val category = binding.category.selectedItem.toString()
         val ingredients = binding.addTextIngredients.text.toString()
         val content = binding.contentEditText.text.toString()
-        if (content.isNotBlank()) {
+        if (nameRecipe.isNotBlank()) {
             val resultBundle = Bundle(2)
             resultBundle.putString(RESULT_PHOTO_KEY, imageContent.toString())
             resultBundle.putString(RESULT_KEY_RECIPE_NAME, nameRecipe)
@@ -76,9 +79,9 @@ class NewRecipeFragment : Fragment() {
     }
 
     companion object {
-        const val ADD_REQUEST_KEY ="addRequestKey"
-        const val RESULT_KEY ="key"
+        const val ADD_REQUEST_KEY = "addRequestKey"
 
+        //        const val RESULT_KEY = "key"
         const val RESULT_PHOTO_KEY = "photoKey"
         const val RESULT_KEY_RECIPE_NAME = "nameRecipeNewContent"
         const val RESULT_KEY_CATEGORY = "category"

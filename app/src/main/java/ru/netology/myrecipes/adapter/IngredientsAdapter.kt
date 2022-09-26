@@ -15,17 +15,15 @@ class IngredientsAdapter(
 
     private val interactionListener: IngredientsInteractionListener
 
-) : ListAdapter<String, IngredientsAdapter.IngredientsViewHolder>(DiffCallback) {
+) : ListAdapter<String, IngredientsAdapter.ViewHolder>(DiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientsViewHolder {
-        Log.d("IngredientsAdapter", "onCreateViewHolder")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = FragmentBasketBinding.inflate(inflater, parent, false)
-        return IngredientsViewHolder(binding, interactionListener)
+        return ViewHolder(binding, interactionListener)
     }
 
-    override fun onBindViewHolder(holder: IngredientsViewHolder, position: Int) {
-        Log.d("IngredientsAdapter", "onBindViewHolder:$position")
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
@@ -33,20 +31,17 @@ class IngredientsAdapter(
         super.submitList(ingredients.let {ArrayList(it)})
     }
 
-    class IngredientsViewHolder(
+    inner class ViewHolder(
         private val binding: FragmentBasketBinding,
         listener: IngredientsInteractionListener,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var ingredient: String
-        private lateinit var recipe: Recipe
         
-//        init {
-//            binding.deleteIngredientMaterialButton.setOnClickListener { listener.onDeleteIngredientsClicked(ingredient)
-//                binding.basketButton.setOnClickListener { listener.onBasketClicked(ingredient) }
-//                binding.addBasketButton.setOnClickListener { listener.onAddBasketButtonClicked(ingredient) }
-//            }
-//        }
+        init {
+//            binding.deleteIngredientMaterialButton.setOnClickListener {
+//                listener.onDeleteIngredientsClicked(ingredient) }
+        }
 
         fun bind(ingredient: String) {
             this.ingredient = ingredient

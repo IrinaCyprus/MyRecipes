@@ -37,7 +37,8 @@ internal class RecipeAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var recipe: Recipe
-//        private lateinit var category:Recipe
+        private lateinit var category:Recipe
+        private lateinit var ingredients:String
 
         private val popupMenu by lazy {
             PopupMenu(itemView.context, binding.menuRecipe).apply {
@@ -60,8 +61,9 @@ internal class RecipeAdapter(
 
         init {
             binding.image.setOnClickListener { listener.onOpenRecipeClicked(recipe) }
+            binding.like.setOnClickListener { listener.onLikeClicked(recipe) }
 //            binding.containedButtonCategory.setOnClickListener { listener.onCategoryClicked(categoryId = 2) }
-            binding.basketButton.setOnClickListener { listener.onBasketClicked(recipe) }
+            binding.basketButton.setOnClickListener { listener.onBasketClicked(ingredients) }
             binding.addBasketButton.setOnClickListener { listener.onAddBasketButtonClicked(recipe) }
             binding.menuRecipe.setOnClickListener { popupMenu.show() }
         }

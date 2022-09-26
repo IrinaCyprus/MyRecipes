@@ -16,15 +16,37 @@
         tools:layout_editor_absoluteX="16dp"
         tools:listitem="@layout/fragment_to_feed" />
 
-<!--    <androidx.appcompat.widget.SearchView-->
-<!--        android:id="@+id/search"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="64dp"-->
-<!--        android:background="@color/white"-->
-<!--        android:focusable="false"-->
-<!--        android:touchscreenBlocksFocus="true"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:text="Search" />-->
+    <TextView
+        android:id="@+id/emptyStateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_state_text"
+        android:textSize="32sp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/emptyStateTextShouldBeDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_state_text_done"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@id/emptyStateText"
+        app:layout_constraintStart_toStartOf="@id/emptyStateText"
+        app:layout_constraintTop_toBottomOf="@id/emptyStateText" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/emptyStateGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:constraint_referenced_ids="emptyStateText, emptyStateTextShouldBeDone"
+        tools:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -43,33 +65,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!--    <com.google.android.material.textfield.TextInputLayout-->
-    <!--        android:id="@+id/search_field"-->
-    <!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="18dp"-->
-    <!--        android:background="@color/white"-->
-    <!--        android:layout_margin="8dp"-->
-    <!--        android:hint="@string/request_hint"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar">-->
-
-    <!--        <com.google.android.material.textfield.TextInputEditText-->
-    <!--            android:id="@+id/text_search"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:textSize="16sp"-->
-    <!--            android:imeOptions="actionDone"-->
-    <!--            android:inputType="text"-->
-    <!--            android:maxLines="1"/>-->
-    <!--    </com.google.android.material.textfield.TextInputLayout>-->
-
-    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-    <!--        android:id="@+id/bottom_navigation_bar"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_gravity="start"-->
-    <!--        android:background="?android:attr/windowBackground"-->
-    <!--        app:backgroundTint="@color/red"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:menu="@menu/bottom_navigation_bar" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,7 +61,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
                     nameRecipe = nameRecipe,
                     category = category,
                     categoryId = 2,
-                    imageContent = imageContent,
+//                    image = imageContent,
                     ingredients = ingredients,
                     content = content
                 )

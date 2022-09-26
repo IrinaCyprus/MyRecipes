@@ -67,10 +67,6 @@ class NewFileRecipeRepository(private val application: Application) : RecipeRepo
         }
     }
 
-//    override fun update() {
-//        data.value = recipes
-//    }
-
     override fun insert(recipe: Recipe) {
         recipes = listOf(
             recipe.copy(id_recipe = ++nextId)
@@ -84,11 +80,18 @@ class NewFileRecipeRepository(private val application: Application) : RecipeRepo
         data.value = recipes
     }
 
-//    override fun getCategory(categoryId: Int) {
-//        recipes = recipes.map {
-//            if (it.categoryId == 1) return
-//        }
-//    }
+    override fun getFilteredList(filters: MutableSet<String>?): LiveData<List<Recipe>> {
+        if (filters.isNullOrEmpty()) {
+            return data
+        }
+        val filteredRecipe = data.map { recipeList ->
+            val newRecipes = recipeList.filter {
+                it.category in filters
+            }
+            newRecipes
+        }
+        return filteredRecipe
+    }
 
     private companion object {
         const val NEXT_ID_PREFS_KEY = "id_post"

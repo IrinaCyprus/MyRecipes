@@ -1,11 +1,12 @@
 package ru.netology.myrecipes.data
 
+import android.net.Uri
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import kotlinx.serialization.Serializable
 
-@Serializable
-@Parcelize
+//@Serializable
+//@Parcelize
 
 data class Recipe(
     val id_recipe: Long,
@@ -22,12 +23,6 @@ data class Recipe(
     val content:String,
 
     val likedByMe:Boolean = false
-    ) : Parcelable
+    )
+//    : Parcelable
 
-@Serializable
-@Parcelize
-enum class Categories: Parcelable {
-    European,
-    Russian,
-    Asian
-}

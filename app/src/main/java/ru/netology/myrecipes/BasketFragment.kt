@@ -13,33 +13,29 @@ import ru.netology.myrecipes.adapter.IngredientsAdapter
 import ru.netology.myrecipes.adapter.RecipeAdapter
 import ru.netology.myrecipes.databinding.FragmentBasketBinding
 import ru.netology.myrecipes.databinding.FragmentFavoritesBinding
+import ru.netology.myrecipes.databinding.FragmentFilterBinding
 import ru.netology.myrecipes.viewModel.RecipeViewModel
 
-class BasketFragment: Fragment(R.layout.fragment_basket) {
-    lateinit var binding: FragmentBasketBinding
+class BasketFragment : Fragment(R.layout.fragment_basket) {
+
     private val viewModel by viewModels<RecipeViewModel>(ownerProducer = ::requireParentFragment)
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentBasketBinding.inflate(inflater, container, false)
-        val adapter = IngredientsAdapter(viewModel)
-        binding.ingredientsList.adapter = adapter
+    ) = FragmentBasketBinding.inflate(
+        layoutInflater, container, false
+    ).also { binding ->
 
-//        viewModel.ingredientsList.observe(viewLifecycleOwner) { ingredients ->
-//            adapter.submitList(ingredients)
+        val ingredients = resources.getStringArray(R.array.categories).toMutableList()
+        val adapterBasket = IngredientsAdapter(viewModel)
+        binding.ingredientsList.adapter = adapterBasket
+
+        adapterBasket.submitList(ingredients)
+
+//        binding.deleteIngredientMaterialButton.setOnClickListener {
+//            viewModel.onDeleteIngredientsClicked(ingredient = "")
 //        }
-
-        viewModel.data.observe(viewLifecycleOwner) { ingredients ->
-//            adapter.submitList(ingredients)
-            binding.empty.isVisible = ingredients.isEmpty()
-        }
-//        binding.deleteIngredientMaterialButton.setOnClickListener { ingredient ->
-//            viewModel.onDeleteIngredientsClicked(ingredient)
-//        }
-
-        return binding.root
-    }
-
+    }.root
 }

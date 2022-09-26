@@ -27,17 +27,21 @@
     <string name="like"> Избранное</string>
     <string name="request_hint"> Что вы ищите?</string>
     <string name="choose_a_category">Add recipe name</string>
-    <string name="filter_category_European">Европейская выбрать</string>
-    <string name="filter_category_Asian">Азиатская выбрать</string>
-    <string name="filter_category_Russian">Русская выбрать</string>
+    <string name="filter_category_European">Европейская</string>
+    <string name="filter_category_Asian">Азиатская</string>
+    <string name="filter_category_Russian">Русская</string>
     <string name="all">Все</string>
     <string name="filter">filter</string>
     <string name="no_recipes">Нет рецептов в этой категории</string>
     <string name="still_empty">Нет ингредиентов в корзине</string>
     <string name="still_empty2">Нет избранных рецептов</string>
     <string name="delete_ingredient_text_description" />
+    <string name="search_by_recipe">Поиск рецента по названию</string>
     <string name="home" />
     <string name="favorites" />
+    <string name="Category" />
+    <string name="empty_state_text">Рецепт не найтен</string>
+    <string name="empty_state_text_done">Измените фильтр или добавьте рецепт </string>
 
 
     <string-array name="categories">

@@ -9,14 +9,14 @@ interface RecipeInteractionListener {
     fun onRemoveClicked(recipe: Recipe)
     fun onEditeClicked(recipe: Recipe)
 
-    fun onEuropeanClicked(categoryId: Int): Int
-    fun onAsianClicked(categoryId: Int)
-    fun onRussianClicked(categoryId: Int)
+//    fun onEuropeanClicked(categoryId: Int): Int
+//    fun onAsianClicked(categoryId: Int)
+//    fun onRussianClicked(categoryId: Int)
 
     fun onOpenRecipeClicked(recipe: Recipe)
-    fun onCategoryClicked(categoryId: Int): Boolean
+//    fun onCategoryClicked(categoryId: Int): Boolean
 
-    fun onBasketClicked(recipe: Recipe)
+    fun onBasketClicked(ingredient: String)
     fun onAddBasketButtonClicked(recipe: Recipe)
 
     fun onAddImage(recipe: Recipe)

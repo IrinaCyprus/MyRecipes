@@ -1,12 +1,13 @@
 package ru.netology.myrecipes.viewModel
 
 import android.app.Application
-import android.view.View
+import android.net.Uri
 import androidx.lifecycle.*
 import kotlinx.coroutines.DelicateCoroutinesApi
+import ru.netology.myrecipes.adapter.FilterInteractionListener
 import ru.netology.myrecipes.adapter.IngredientsInteractionListener
 import ru.netology.myrecipes.adapter.RecipeInteractionListener
-import ru.netology.myrecipes.data.Categories
+
 import ru.netology.myrecipes.data.NewFileRecipeRepository
 import ru.netology.myrecipes.data.Recipe
 import ru.netology.myrecipes.data.RecipeRepository
@@ -17,7 +18,8 @@ class RecipeViewModel(
     application: Application
 ) : AndroidViewModel(application),
     RecipeInteractionListener,
-    IngredientsInteractionListener {
+    IngredientsInteractionListener,
+    FilterInteractionListener {
 
     @OptIn(DelicateCoroutinesApi::class)
 
@@ -30,34 +32,42 @@ class RecipeViewModel(
 //        )
 
     val data: LiveData<List<Recipe>> = repository.data as MutableLiveData<List<Recipe>>
+
     val currentRecipe = MutableLiveData<Recipe?>(null)
     val navigateToRecipeContentScreenEvent = SingleLiveEvent<Recipe?>()
-    val navigatetoIngredientsContent = SingleLiveEvent<String?>()
+
     val ingredientsList = MutableLiveData<String?>(null)
 
-    //    val ingredientsList = SingleLiveEvent<String>()
     val imageContent = MutableLiveData<String?>(null)
     val openRecipeContent = SingleLiveEvent<Long>()
-    private val categoryList = mutableSetOf<Int>()
+
+    private val filters = MutableLiveData<MutableSet<String>?>(mutableSetOf())
+    var filterResult = Transformations.switchMap(filters) { filter ->
+        repository.getFilteredList(filter)
+    }
 
     override fun onLikeClicked(recipe: Recipe) = repository.like(recipe.id_recipe)
     override fun onRemoveClicked(recipe: Recipe) = repository.delete(recipe.id_recipe)
     override fun onEditeClicked(recipe: Recipe) {
-//        repository.update(recipe)
         currentRecipe.value = recipe
         navigateToRecipeContentScreenEvent.value = recipe
+        imageContent.value = recipe.toString()
     }
 
-    override fun onEuropeanClicked(categoryId: Int): Int {
-        TODO("Not yet implemented")
+    override fun checkboxFilterPressedOn(category: String) {
+        val filterList = filters.value
+        filterList?.add(category)
+        filters.value = filterList
     }
 
-    override fun onAsianClicked(categoryId: Int) {
-        TODO("Not yet implemented")
+    override fun checkboxFilterPressedOff(category: String) {
+        val filterList = filters.value
+        filterList?.remove(category)
+        filters.value = filterList
     }
 
-    override fun onRussianClicked(categoryId: Int) {
-        TODO("Not yet implemented")
+    override fun getStatusCheckBox(category: String): Boolean {
+        return filters.value?.contains(category) == true
     }
 
     override fun onAddImage(recipe: Recipe) {
@@ -77,21 +87,36 @@ class RecipeViewModel(
         openRecipeContent.value = recipe.id_recipe
     }
 
-    override fun onBasketClicked(recipe: Recipe) {
-        navigatetoIngredientsContent.call()
+    override fun onBasketClicked(ingredient: String) {
+        ingredientsList.value =ingredient
     }
 
-    override fun onCategoryClicked(categoryId: Int): Boolean = categoryList.add(categoryId)
-
-    fun getCategoryById(): Int {
-        return categoryList.size
+    fun filterSearch(charForSearch: CharSequence?): MutableList<Recipe> {
+        val filterRecipes = mutableListOf<Recipe>()
+        val recipes = filterResult.value
+        if (charForSearch?.isBlank() == true) {
+            if (recipes != null) {
+                filterRecipes.addAll(recipes)
+            }
+        } else if (recipes != null) {
+            for (recipe in recipes) {
+                if (
+                    recipe.name_recipe
+                        .lowercase(Locale.getDefault())
+                        .contains(
+                            charForSearch.toString().lowercase(Locale.getDefault())
+                        )
+                ) {
+                    filterRecipes.add(recipe)
+                }
+            }
+        }
+        return filterRecipes
     }
-
-    fun searchRecipeByName(nameRecipe: String) = repository.search(nameRecipe)
 
     fun onSaveButtonClicked(
         nameRecipe: String,
-        imageContent: String,
+//        image: String,
         categoryId: Int,
         category: String,
         ingredients: String,
@@ -99,19 +124,19 @@ class RecipeViewModel(
     ) {
         if (nameRecipe.isBlank()) return
         if (category.isBlank()) return
-        if (imageContent.isBlank()) return
+//        if (image.isBlank()) return
         if (ingredients.isBlank()) return
         if (content.isBlank()) return
         val recipe = currentRecipe.value?.copy(
             name_recipe = nameRecipe,
             category = category,
             categoryId = categoryId,
-            head_image = imageContent,
+            head_image = imageContent.value.toString(),
             ingredients = ingredients,
             content = content
         ) ?: Recipe(
             id_recipe = RecipeRepository.NEW_RECIPE_ID,
-            head_image = imageContent,
+            head_image = imageContent.value.toString(),
             author_name = "  Me",
             categoryId = categoryId,
             category = category,
@@ -124,7 +149,7 @@ class RecipeViewModel(
         )
         repository.save(recipe)
         currentRecipe.value = null
-//        imageContent.value = null
+        imageContent.value = null
     }
 
     override fun onDeleteIngredientsClicked(ingredient: String) {

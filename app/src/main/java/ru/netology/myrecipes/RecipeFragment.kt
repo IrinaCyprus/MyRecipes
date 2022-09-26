@@ -1,12 +1,12 @@
 package ru.netology.myrecipes
 
 import android.os.Bundle
-import android.view.*
-import androidx.core.view.MenuProvider
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import ru.netology.myrecipes.FeedFragment.Companion.KEY_ID
 import ru.netology.myrecipes.adapter.RecipeAdapter
@@ -54,23 +54,24 @@ class RecipeFragment : Fragment() {
                     nameRecipe = nameRecipe,
                     category = category,
                     categoryId = 2,
-                    imageContent = imageContent,
+//                    image = imageContent,
                     ingredients = ingredients,
                     content = content
                 )
             }
         }
 
+//        viewModel.ingredientsList.observe(viewLifecycleOwner) {
+//            val direction =
+//                RecipeFragmentDirections.actionRecipeFragmentToBasketFragment()
+//            findNavController().navigate(direction)
+//        }
+
         viewModel.navigateToRecipeContentScreenEvent.observe(viewLifecycleOwner) {
             val direction = RecipeFragmentDirections.actionRecipeFragmentToNewRecipeFragment()
             findNavController().navigate(direction)
         }
-
         return binding.root
-    }
-
-    companion object {
-        const val CALLER_RECIPE = "Caller: recipe"
     }
 }
 

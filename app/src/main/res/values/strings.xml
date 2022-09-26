@@ -27,17 +27,21 @@
     <string name="like"> Favorite</string>
     <string name="request_hint"> What are you looking for?</string>
     <string name="choose_a_category">Choose category</string>
-    <string name="filter_category_European">choose European</string>
-    <string name="filter_category_Asian">choose Asian</string>
-    <string name="filter_category_Russian">choose Russian</string>
+    <string name="filter_category_European">European</string>
+    <string name="filter_category_Asian">Asian</string>
+    <string name="filter_category_Russian">Russian</string>
     <string name="all">All</string>
     <string name="filter">filter</string>
     <string name="no_recipes">There are no recipes in this category</string>
     <string name="still_empty">Basket is empty</string>
     <string name="still_empty2">Favorite is empty</string>
     <string name="delete_ingredient_text_description" />
+    <string name="search_by_recipe">Search by recipe</string>
+    <string name="empty_state_text">There is nothing here</string>
     <string name="home" />
     <string name="favorites" />
+    <string name="Category" />
+    <string name="empty_state_text_done">Please change the filter or add a recipe</string>
 
     <string-array name="categories">
         <item>@string/european</item>
