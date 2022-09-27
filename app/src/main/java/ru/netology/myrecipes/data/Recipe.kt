@@ -1,13 +1,8 @@
 package ru.netology.myrecipes.data
 
-import android.net.Uri
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 import kotlinx.serialization.Serializable
 
-//@Serializable
-//@Parcelize
-
+@Serializable
 data class Recipe(
     val id_recipe: Long,
     val head_image: String,
@@ -24,5 +19,5 @@ data class Recipe(
 
     val likedByMe:Boolean = false
     )
-//    : Parcelable
+
 

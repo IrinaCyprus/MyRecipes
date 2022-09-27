@@ -1,16 +1,15 @@
 package ru.netology.myrecipes.viewModel
 
 import android.app.Application
-import android.net.Uri
 import androidx.lifecycle.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import ru.netology.myrecipes.adapter.FilterInteractionListener
 import ru.netology.myrecipes.adapter.IngredientsInteractionListener
 import ru.netology.myrecipes.adapter.RecipeInteractionListener
-
-import ru.netology.myrecipes.data.NewFileRecipeRepository
 import ru.netology.myrecipes.data.Recipe
 import ru.netology.myrecipes.data.RecipeRepository
+import ru.netology.myrecipes.db.AppDb
+import ru.netology.myrecipes.impl.RecipeRepositoryImpl
 import ru.netology.myrecipes.util.SingleLiveEvent
 import java.util.*
 
@@ -22,14 +21,12 @@ class RecipeViewModel(
     FilterInteractionListener {
 
     @OptIn(DelicateCoroutinesApi::class)
-
-    private val repository: RecipeRepository = NewFileRecipeRepository(application)
-
-    //        RecipeRepositoryImpl(
-//            dao = AppDb.getInstance(
-//                context = application
-//            ).postDao
-//        )
+//  private val repository: RecipeRepository = NewFileRecipeRepository(application)
+    private val repository: RecipeRepository = RecipeRepositoryImpl(
+        dao = AppDb.getInstance(
+            context = application
+        ).recipeDao
+    )
 
     val data: LiveData<List<Recipe>> = repository.data as MutableLiveData<List<Recipe>>
 
@@ -88,7 +85,7 @@ class RecipeViewModel(
     }
 
     override fun onBasketClicked(ingredient: String) {
-        ingredientsList.value =ingredient
+        ingredientsList.value = ingredient
     }
 
     fun filterSearch(charForSearch: CharSequence?): MutableList<Recipe> {
