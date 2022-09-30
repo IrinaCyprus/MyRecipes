@@ -16,8 +16,8 @@ interface RecipeInteractionListener {
     fun onOpenRecipeClicked(recipe: Recipe)
 //    fun onCategoryClicked(categoryId: Int): Boolean
 
-    fun onBasketClicked(ingredient: String)
-    fun onAddBasketButtonClicked(recipe: Recipe)
+//    fun onBasketClicked(ingredient: String)
+    fun onAddBasketButtonClicked(ingredient: String)
 
     fun onAddImage(recipe: Recipe)
 }

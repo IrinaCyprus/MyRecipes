@@ -12,6 +12,7 @@
         android:background="@drawable/jpeg_test"
         android:contentDescription="@string/head_image"
         android:visibility="visible"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

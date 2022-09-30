@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_recipe.*
 import ru.netology.myrecipes.FeedFragment.Companion.KEY_ID
 import ru.netology.myrecipes.adapter.RecipeAdapter
 import ru.netology.myrecipes.data.Recipe
@@ -23,7 +24,6 @@ class RecipeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentRecipeBinding.inflate(inflater, container, false)
-
         val viewHolder = RecipeAdapter.ViewHolder(binding.recipeFragment, viewModel)
         val id = arguments?.getLong(KEY_ID)
 
@@ -54,18 +54,17 @@ class RecipeFragment : Fragment() {
                     nameRecipe = nameRecipe,
                     category = category,
                     categoryId = 2,
-//                    image = imageContent,
                     ingredients = ingredients,
                     content = content
                 )
             }
         }
 
-        viewModel.ingredientsList.observe(viewLifecycleOwner) {
-            val direction =
-                RecipeFragmentDirections.actionRecipeFragmentToBasketFragment()
-            findNavController().navigate(direction)
-        }
+//        viewModel.ingredientsList.observe(viewLifecycleOwner) {
+//            val direction =
+//                RecipeFragmentDirections.actionRecipeFragmentToBasketFragment()
+//            findNavController().navigate(direction)
+//        }
 
         viewModel.navigateToRecipeContentScreenEvent.observe(viewLifecycleOwner) {
             val direction = RecipeFragmentDirections.actionRecipeFragmentToNewRecipeFragment()

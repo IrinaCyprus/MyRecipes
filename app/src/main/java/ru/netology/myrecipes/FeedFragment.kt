@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.myrecipes.adapter.RecipeAdapter
+import ru.netology.myrecipes.adapter.RecipesAdapter
 import ru.netology.myrecipes.data.Recipe
 import ru.netology.myrecipes.databinding.FragmentFeedBinding
 import ru.netology.myrecipes.viewModel.RecipeViewModel
@@ -21,7 +22,7 @@ import java.util.*
 
 class FeedFragment : Fragment() {
     lateinit var data: LiveData<List<Recipe>>
-    private lateinit var adapter: RecipeAdapter
+    private lateinit var adapter: RecipesAdapter
     lateinit var binding: FragmentFeedBinding
     val viewModel: RecipeViewModel by viewModels(ownerProducer = ::requireParentFragment)
     var list = mutableListOf<Recipe>()
@@ -32,7 +33,7 @@ class FeedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFeedBinding.inflate(inflater, container, false)
-        adapter = RecipeAdapter(viewModel)
+        adapter = RecipesAdapter(viewModel)
         binding.recipeRecyclerView.adapter = adapter
 
         viewModel.data.observe(viewLifecycleOwner) {
@@ -125,7 +126,6 @@ class FeedFragment : Fragment() {
                     nameRecipe = nameRecipe,
                     category = category,
                     categoryId = 2,
-//                    image = imageContent,
                     ingredients = ingredients,
                     content = content
                 )
@@ -138,7 +138,6 @@ class FeedFragment : Fragment() {
             findNavController().navigate(direction)
         }
 
-//TODO не понимаю почему здесь я попадаю не на фрагмент рецепта, а на фрагмент корзины и он еще и лагает
         viewModel.openRecipeContent.observe(viewLifecycleOwner) {
             findNavController().navigate(R.id.action_feedFragment_to_recipeFragment,
                 Bundle().apply {
@@ -148,7 +147,6 @@ class FeedFragment : Fragment() {
         }
         return binding.root
     }
-
 
     companion object {
         const val KEY_ID = "id"

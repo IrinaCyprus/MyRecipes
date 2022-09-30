@@ -21,15 +21,14 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
     ) = FragmentBasketBinding.inflate(
         layoutInflater, container, false
     ).also { binding ->
-
         val ingredients = resources.getStringArray(R.array.categories).toMutableList()
         val adapterBasket = IngredientsAdapter(viewModel)
         binding.ingredientsList.adapter = adapterBasket
 
         adapterBasket.submitList(ingredients)
 
-        binding.deleteIngredientMaterialButton.setOnClickListener {
-            viewModel.onDeleteIngredientsClicked(ingredient = "")
-        }
+//        binding.deleteIngredientMaterialButton.setOnClickListener {
+//            viewModel.onDeleteIngredientsClicked(ingredient = "")
+//        }
     }.root
 }

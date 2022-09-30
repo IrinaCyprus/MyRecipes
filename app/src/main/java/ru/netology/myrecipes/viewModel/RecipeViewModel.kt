@@ -33,7 +33,7 @@ class RecipeViewModel(
     val currentRecipe = MutableLiveData<Recipe?>(null)
     val navigateToRecipeContentScreenEvent = SingleLiveEvent<Recipe?>()
 
-    val ingredientsList = MutableLiveData<String?>(null)
+    private val ingredientsList = MutableLiveData<String?>(null)
 
     val imageContent = MutableLiveData<String?>(null)
     val openRecipeContent = SingleLiveEvent<Long>()
@@ -76,16 +76,16 @@ class RecipeViewModel(
         navigateToRecipeContentScreenEvent.call()
     }
 
-    override fun onAddBasketButtonClicked(recipe: Recipe) {
-        ingredientsList.value = recipe.ingredients
+    override fun onAddBasketButtonClicked(ingredient: String) {
+        ingredientsList.value = ingredient
     }
 
     override fun onOpenRecipeClicked(recipe: Recipe) {
         openRecipeContent.value = recipe.id_recipe
     }
 
-    override fun onBasketClicked(ingredient: String) {
-        ingredientsList.value = ingredient
+    fun onBasketClicked(): MutableLiveData<String?> {
+        return ingredientsList
     }
 
     fun filterSearch(charForSearch: CharSequence?): MutableList<Recipe> {
@@ -113,7 +113,6 @@ class RecipeViewModel(
 
     fun onSaveButtonClicked(
         nameRecipe: String,
-//        image: String,
         categoryId: Int,
         category: String,
         ingredients: String,
@@ -121,7 +120,6 @@ class RecipeViewModel(
     ) {
         if (nameRecipe.isBlank()) return
         if (category.isBlank()) return
-//        if (image.isBlank()) return
         if (ingredients.isBlank()) return
         if (content.isBlank()) return
         val recipe = currentRecipe.value?.copy(

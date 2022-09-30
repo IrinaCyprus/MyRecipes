@@ -37,8 +37,8 @@ class IngredientsAdapter(
         private lateinit var ingredient: String
         
         init {
-            binding.deleteIngredientMaterialButton.setOnClickListener {
-                listener.onDeleteIngredientsClicked(ingredient) }
+//            binding.deleteIngredientMaterialButton.setOnClickListener {
+//                listener.onDeleteIngredientsClicked(ingredient) }
     }
 
         fun bind(ingredient: String) {
@@ -46,7 +46,7 @@ class IngredientsAdapter(
             with(binding) {
                 ingredientsText.visibility = View.VISIBLE
                 ingredientsList.toString()
-                deleteIngredientMaterialButton.visibility = View.VISIBLE
+//                deleteIngredientMaterialButton.visibility = View.VISIBLE
                 empty.visibility = View.VISIBLE
             }
         }
